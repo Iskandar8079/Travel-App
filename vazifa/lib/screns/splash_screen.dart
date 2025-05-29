@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vazifa/home_screen.dart';
 import 'package:vazifa/utils/app_color.dart';
 import 'package:vazifa/utils/media.dart';
 import 'package:vazifa/utils/text_style.dart';

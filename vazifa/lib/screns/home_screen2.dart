@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vazifa/home_screen.dart';
+import 'package:vazifa/screns/home_screen.dart';
 import 'package:vazifa/utils/app_color.dart';
 import 'package:vazifa/utils/media.dart';
 
-import 'utils/text_style.dart';
+import '../utils/text_style.dart';
 
 class HomeScreen2 extends StatelessWidget {
   const HomeScreen2({super.key});
