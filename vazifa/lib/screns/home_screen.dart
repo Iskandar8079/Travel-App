@@ -3,121 +3,150 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vazifa/screns/home_screen2.dart';
 import 'package:vazifa/utils/app_color.dart';
 import 'package:vazifa/utils/media.dart';
 import 'package:vazifa/utils/text_style.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen2()),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        //   floatingActionButton: FloatingActionButton(onPressed: () {
+        //     Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => HomeScreen2()),
+        // );
+        //   },),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 34),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: buildColumn(),
+        ),
+
+        bottomNavigationBar: buildButton(),
+      ),
+    );
+  }
+
+  Column buildColumn() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildAppText(
+                  text: "Hi, David 👋",
+                  color: AppColor.textColorBlack,
+                  fontsize: 25,
+                ),
+                SizedBox(height: 9.h),
+                buildAppText(
+                  text: "Explore the world",
+                  fontsize: 16,
+                  color: AppColor.textColorBlack.withOpacity(0.4),
+                ),
+              ],
+            ),
+            Spacer(),
+            CircleAvatar(
+              backgroundImage: AssetImage(Media.rasm),
+              minRadius: 25.r,
+            ),
+          ],
+        ),
+        SizedBox(height: 25.h),
+        Container(
+          width: double.infinity,
+          height: 50.h,
+          decoration: BoxDecoration(
+            border: Border.all(color: AppColor.borderColor),
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Row(
+              children: [
+                buildAppText(
+                  text: "Search places",
+                  fontsize: 15,
+                  color: AppColor.textColor,
+                ),
+                SizedBox(width: 90.w),
+                SvgPicture.asset(Media.vertikal, height: 35.h),
+                SizedBox(width: 25.w),
+                SvgPicture.asset(Media.icon),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 25.h),
+        Row(
+          children: [
+            buildAppText(text: "Popular places", fontsize: 20),
+            Spacer(),
+            buildAppText(
+              text: "View all",
+              fontsize: 16,
+              color: AppColor.textColor,
+            ),
+          ],
+        ),
+        SizedBox(height: 25.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              width: 120.w,
+              height: 45.h,
+              decoration: BoxDecoration(
+                color: AppColor.textColorBlack,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: buildAppText(
+                text: "Most Viewed",
+                color: AppColor.whiteColor,
+              ),
+            ),
+            buildAppText(text: "Nearby", color: AppColor.textcolorWhite),
+            buildAppText(text: "Latest", color: AppColor.textcolorWhite),
+          ],
+        ),
+        SizedBox(height: 25.h),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
             children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildAppText(
-                        text: "Hi, David 👋",
-                        color: AppColor.textColorBlack,
-                        fontsize: 25,
-                      ),
-                      SizedBox(height: 9.h),
-                      buildAppText(
-                        text: "Explore the world",
-                        fontsize: 16,
-                        color: AppColor.textColorBlack.withOpacity(0.4),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  CircleAvatar(
-                    backgroundImage: AssetImage(Media.rasm),
-                    minRadius: 25.r,
-                  ),
-                ],
-              ),
-              SizedBox(height: 25.h),
-              Container(
-                width: double.infinity,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColor.borderColor),
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Row(
-                    children: [
-                      buildAppText(
-                        text: "Search places",
-                        fontsize: 15,
-                        color: AppColor.textColor,
-                      ),
-                      SizedBox(width: 90.w),
-                      SvgPicture.asset(Media.vertikal, height: 35.h),
-                      SizedBox(width: 25.w),
-                      SvgPicture.asset(Media.icon),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 25.h),
-              Row(
-                children: [
-                  buildAppText(text: "Popular places", fontsize: 20),
-                  Spacer(),
-                  buildAppText(
-                    text: "View all",
-                    fontsize: 16,
-                    color: AppColor.textColor,
-                  ),
-                ],
-              ),
-              SizedBox(height: 25.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    width: 120.w,
-                    height: 45.h,
-                    decoration: BoxDecoration(
-                      color: AppColor.textColorBlack,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: buildAppText(
-                      text: "Most Viewed",
-                      color: AppColor.whiteColor,
-                    ),
-                  ),
-                  buildAppText(text: "Nearby", color: AppColor.textcolorWhite),
-                  buildAppText(text: "Latest", color: AppColor.textcolorWhite),
-                ],
-              ),
-              SizedBox(height: 25.h),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    buildStack(imagePath: Media.mountain),
-                    SizedBox(width: 18.w),
-                    buildStack(imagePath: Media.mountain2),
-                  ],
-                ),
-              ),
+              buildStack(imagePath: Media.mountain),
+              SizedBox(width: 18.w),
+              buildStack(imagePath: Media.mountain2),
             ],
           ),
         ),
-        bottomNavigationBar: buildButton(),
-      ),
+      ],
     );
   }
 

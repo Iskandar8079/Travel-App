@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vazifa/screns/home_screen.dart';
 import 'package:vazifa/utils/app_color.dart';
 import 'package:vazifa/utils/media.dart';
 import 'package:vazifa/utils/text_style.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    });
+  }
+  @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
